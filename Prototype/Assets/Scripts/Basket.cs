@@ -15,7 +15,7 @@ public class Basket : MonoBehaviour
     {
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 currentPosition = transform.position;
-        currentPosition.x = mousePosition.x;
+        currentPosition.x = Mathf.Clamp(mousePosition.x, -Info.screenWidth, Info.screenWidth);
         transform.position = currentPosition;
     }
 

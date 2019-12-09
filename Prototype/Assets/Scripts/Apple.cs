@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Apple : MonoBehaviour
 {
-    private static float bottomY = -10f;
-
     private BasketManager basketManager = null;
+    private float bottomY;
 
     private void Awake()
     {
         basketManager = FindObjectOfType<BasketManager>();
+        bottomY = -Info.screenHeight;
     }
 
     void LateUpdate()
