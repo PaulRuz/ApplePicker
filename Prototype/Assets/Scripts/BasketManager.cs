@@ -1,6 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BasketManager : MonoBehaviour
 {
@@ -8,9 +8,12 @@ public class BasketManager : MonoBehaviour
     [Range(1, 3)] public byte countBaskets = 3;
 
     private List<GameObject> basketList = null;
+    private ScoreCounter scoreCounter = null;
 
     void Awake()
     {
+        scoreCounter = FindObjectOfType<ScoreCounter>();
+
         basketList = new List<GameObject>();
 
         Vector2 pos = transform.position;
@@ -23,6 +26,19 @@ public class BasketManager : MonoBehaviour
             pos.x = spacingX * i;
 
             basketList.Add(newBasket);
+        }
+    }
+
+    public void RemoveBasket()
+    {
+        int numBaske = basketList.Count - 1;
+        GameObject currentBasket = basketList[numBaske];
+        basketList.Remove(currentBasket);
+        Destroy(currentBasket);
+        if (basketList.Count == 0)
+        {
+            scoreCounter.AddHighScore();
+            SceneManager.LoadScene(0);
         }
     }
 }

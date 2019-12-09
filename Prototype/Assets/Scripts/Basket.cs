@@ -1,10 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Basket : MonoBehaviour
 {
     private string targetTag = "Apple";
+    private int appleScore = 100;
+    private ScoreCounter scoreCounter = null;
+
+    private void Awake()
+    {
+        scoreCounter = FindObjectOfType<ScoreCounter>();
+    }
 
     private void OnMouseDrag()
     {
@@ -19,7 +24,8 @@ public class Basket : MonoBehaviour
         GameObject selectedApple = collision.gameObject;
         if (selectedApple.CompareTag(targetTag))
         {
-            Destroy(selectedApple);
+            scoreCounter.AddCurrentScore(appleScore);
+            Destroy(selectedApple);          
         }
     }
 }
