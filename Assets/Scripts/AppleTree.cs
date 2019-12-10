@@ -15,7 +15,7 @@ public class AppleTree : MonoBehaviour
     private void Start()
     {
         RecursiveCreateApple();
-        distanceChangeDirection = Info.screenWidth;
+        distanceChangeDirection = Info.ScreenWidth;
     }
 
     private void Update()

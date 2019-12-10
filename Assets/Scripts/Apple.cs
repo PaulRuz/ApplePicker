@@ -10,7 +10,7 @@ public class Apple : MonoBehaviour
     private void Awake()
     {
         basketManager = FindObjectOfType<BasketManager>();
-        bottomY = -Info.screenHeight;
+        bottomY = -Info.ScreenHeight;
     }
 
     void LateUpdate()

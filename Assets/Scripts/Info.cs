@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class Info : MonoBehaviour
 {
-    public static float screenHeight;
-    public static float screenWidth;
-
-    void Awake()
+    private static float _screenHeight;
+    public static float ScreenHeight
     {
-        screenHeight = Camera.main.orthographicSize;
-        screenWidth = screenHeight * Camera.main.aspect;
+        get { return _screenHeight; }
+    }
+    private static float _screenWidth;
+    public static float ScreenWidth
+    {
+        get { return _screenWidth; }
+    }
+
+    private void Awake()
+    {
+        _screenHeight = Camera.main.orthographicSize;
+        _screenWidth = _screenHeight * Camera.main.aspect;
     }
 }
